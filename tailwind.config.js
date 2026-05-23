@@ -1,0 +1,1 @@
+module.exports = { content: ['./templates/**/*.html','./apps/**/templates/**/*.html'], theme: { extend: { colors: { tea_green: { DEFAULT: '#ccd5ae' }, beige: { DEFAULT: '#e9edc9' }, cornsilk: { DEFAULT: '#fefae0' }, papaya_whip: { DEFAULT: '#faedcd' }, light_bronze: { DEFAULT: '#d4a373' } } } }, plugins: [] }
