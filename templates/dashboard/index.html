@@ -3,10 +3,44 @@
 {% block content %}
 <div class='min-h-screen pt-20 px-6 pb-12'>
   <div class='max-w-6xl mx-auto'>
-    <div class='flex justify-between items-center mb-8'><h1 class='font-display text-3xl font-semibold text-stone-800'>Dashboard</h1><a href='{% url "admin:index" %}' class='text-sm text-stone-500 hover:text-stone-800'>Admin Panel →</a></div>
-    <div class='grid md:grid-cols-4 gap-4 mb-10'>
-      <div class='bg-cornsilk rounded-2xl p-5 shadow-soft'><p class='text-stone-400 text-xs uppercase tracking-wide mb-1'>Projects</p><p class='text-2xl font-bold text-stone-800'>{{ projects.count }}</p></div>
+    <div class='flex justify-between items-center mb-8'>
+      <h1 class='font-display text-3xl font-semibold text-stone-800'>Dashboard</h1>
+      <div class='flex gap-4 items-center'>
+        <a href='{% url "dashboard:profile_edit" %}' class='px-4 py-2 bg-tea_green text-stone-800 font-medium text-sm rounded-xl hover:opacity-80 transition shadow-soft'>Edit Personal Details</a>
+        <a href='{% url "admin:index" %}' class='text-sm text-stone-500 hover:text-stone-800'>Admin Panel →</a>
+      </div>
     </div>
+
+    <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10'>
+      <a href='{% url "dashboard:project_list" %}' class='bg-cornsilk rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-stone-800 mb-1'>{{ projects.count }}</p>
+        <p class='text-sm text-stone-400'>View Projects</p>
+      </a>
+      <a href='{% url "dashboard:education_list" %}' class='bg-papaya_whip/60 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-stone-800 mb-1'>Education</p>
+        <p class='text-sm text-stone-400'>Manage education entries</p>
+      </a>
+      <a href='{% url "dashboard:certification_list" %}' class='bg-papaya_whip/60 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-stone-800 mb-1'>Certifications</p>
+        <p class='text-sm text-stone-400'>Manage certifications</p>
+      </a>
+      <a href='{% url "dashboard:social_links_list" %}' class='bg-papaya_whip/60 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-stone-800 mb-1'>Social Links</p>
+        <p class='text-sm text-stone-400'>Manage social links</p>
+      </a>
+    </div>
+
+    <div class='grid md:grid-cols-2 gap-4 mb-10'>
+      <a href='{% url "dashboard:contact_list" %}' class='bg-cornsilk rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-stone-800 mb-1'>Contacts</p>
+        <p class='text-sm text-stone-400'>View contact messages</p>
+      </a>
+      <a href='{% url "dashboard:profile_edit" %}' class='bg-cornsilk rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-stone-800 mb-1'>Profile</p>
+        <p class='text-sm text-stone-400'>Edit personal details</p>
+      </a>
+    </div>
+
     <div class='bg-papaya_whip/60 rounded-2xl p-6 shadow-soft mb-8'>
       <h2 class='font-semibold text-stone-700 mb-4 text-lg'>Add New Project</h2>
       {% include 'dashboard/partials/project_form.html' %}

@@ -74,3 +74,4 @@ TAILWIND_APP_NAME='theme'
 INTERNAL_IPS=['127.0.0.1']
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_URL='/dashboard/login/'
+LOGIN_REDIRECT_URL='/dashboard/'

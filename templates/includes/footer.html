@@ -1,6 +1,35 @@
 <footer class='py-12 px-6 border-t border-stone-200 bg-beige/30'>
-  <div class='max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-4'>
-    <p class='text-stone-400 text-sm'>{{ site_profile.name|default:'Portfolio' }} &copy; {% now 'Y' %}</p>
-    <div class='flex gap-4'>{% for link in site_social_links %}<a href='{{ link.url }}' target='_blank' rel='noopener noreferrer' class='text-stone-400 hover:text-stone-700 text-sm transition-colors'>{{ link.platform }}</a>{% endfor %}</div>
+  <div class='max-w-5xl mx-auto'>
+    <div class='flex flex-col md:flex-row justify-between items-center gap-8 mb-8'>
+      <div class='text-center md:text-left'>
+        <h3 class='font-display text-xl font-semibold text-stone-800 mb-2'>{{ site_profile.name|default:'Portfolio' }}</h3>
+        <p class='text-stone-400 text-sm'>Building thoughtful, production-grade software.</p>
+      </div>
+      <div class='flex gap-4 items-center'>
+        {% if site_profile.email %}
+        <a href='mailto:{{ site_profile.email }}' class='w-10 h-10 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 font-medium hover:bg-tea_green transition-colors' title='Email'>
+          ✉
+        </a>
+        {% endif %}
+        {% if site_profile.phone %}
+        <a href='tel:{{ site_profile.phone }}' class='w-10 h-10 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 font-medium hover:bg-tea_green transition-colors' title='Phone'>
+          📞
+        </a>
+        {% endif %}
+        {% for link in site_social_links %}
+        <a href='{{ link.url }}' target='_blank' rel='noopener noreferrer' class='w-10 h-10 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 font-medium hover:bg-tea_green transition-colors' title='{{ link.platform }}'>
+          {% if link.icon %}{{ link.icon }}{% else %}{{ link.platform }}{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class='flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-stone-200'>
+      <p class='text-stone-400 text-sm'>{{ site_profile.name|default:'Portfolio' }} &copy; {% now 'Y' %}. All rights reserved.</p>
+      <div class='flex gap-6 text-sm text-stone-400'>
+        <a href='#' class='hover:text-stone-700 transition-colors'>Privacy Policy</a>
+        <a href='#' class='hover:text-stone-700 transition-colors'>Terms of Service</a>
+        <a href='{% url "contact:submit" %}' class='hover:text-stone-700 transition-colors'>Contact</a>
+      </div>
+    </div>
   </div>
 </footer>

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Edit Personal Details{% endblock %}
+{% block content %}
+<div class='min-h-screen pt-24 pb-16 px-6'>
+  <div class='max-w-3xl mx-auto bg-cornsilk rounded-2xl p-8 shadow-soft'>
+    <div class='flex justify-between items-center mb-6'>
+      <h1 class='font-display text-3xl font-semibold text-stone-800'>Edit Personal Details</h1>
+      <a href='{% url "dashboard:home" %}' class='text-sm text-stone-500 hover:text-stone-800'>← Back to Dashboard</a>
+    </div>
+    <form method='post' class='space-y-6'>
+      {% csrf_token %}
+      
+      <div class='grid md:grid-cols-2 gap-6'>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Full Name</label>
+          <input type='text' name='name' value='{{ form.name.value|default:"" }}' required class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>
+          {% if form.name.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.name.errors.0 }}</p>{% endif %}
+        </div>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Professional Role</label>
+          <input type='text' name='role' value='{{ form.role.value|default:"" }}' required class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>
+          {% if form.role.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.role.errors.0 }}</p>{% endif %}
+        </div>
+      </div>
+
+      <div>
+        <label class='block text-sm font-medium text-stone-600 mb-2'>Tagline</label>
+        <input type='text' name='tagline' value='{{ form.tagline.value|default:"" }}' required class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>
+        {% if form.tagline.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.tagline.errors.0 }}</p>{% endif %}
+      </div>
+
+      <div class='grid md:grid-cols-3 gap-6'>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Email Address</label>
+          <input type='email' name='email' value='{{ form.email.value|default:"" }}' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>
+          {% if form.email.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.email.errors.0 }}</p>{% endif %}
+        </div>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Phone Number</label>
+          <input type='text' name='phone' value='{{ form.phone.value|default:"" }}' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>
+          {% if form.phone.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.phone.errors.0 }}</p>{% endif %}
+        </div>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Location / City</label>
+          <input type='text' name='location' value='{{ form.location.value|default:"" }}' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>
+          {% if form.location.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.location.errors.0 }}</p>{% endif %}
+        </div>
+      </div>
+
+      <div>
+        <label class='block text-sm font-medium text-stone-600 mb-2'>Biography</label>
+        <textarea name='biography' rows='4' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>{{ form.biography.value|default:"" }}</textarea>
+        {% if form.biography.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.biography.errors.0 }}</p>{% endif %}
+      </div>
+
+      <div class='grid md:grid-cols-2 gap-6'>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Experience Summary</label>
+          <textarea name='experience_summary' rows='4' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>{{ form.experience_summary.value|default:"" }}</textarea>
+          {% if form.experience_summary.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.experience_summary.errors.0 }}</p>{% endif %}
+        </div>
+        <div>
+          <label class='block text-sm font-medium text-stone-600 mb-2'>Skills Summary</label>
+          <textarea name='skills_summary' rows='4' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>{{ form.skills_summary.value|default:"" }}</textarea>
+          {% if form.skills_summary.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.skills_summary.errors.0 }}</p>{% endif %}
+        </div>
+      </div>
+
+      <div>
+        <label class='block text-sm font-medium text-stone-600 mb-2'>Physical Address</label>
+        <textarea name='address' rows='2' class='w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-tea_green'>{{ form.address.value|default:"" }}</textarea>
+        {% if form.address.errors %}<p class='text-red-500 text-xs mt-1'>{{ form.address.errors.0 }}</p>{% endif %}
+      </div>
+
+      <div class='flex items-center gap-2'>
+        <input type='checkbox' name='is_available' id='is_available' {% if form.is_available.value %}checked{% endif %} class='rounded border-stone-200 text-tea_green focus:ring-tea_green'>
+        <label for='is_available' class='text-sm font-medium text-stone-600'>Available for freelance/hire</label>
+      </div>
+
+      <div class='flex gap-4 pt-4 border-t border-stone-100'>
+        <button type='submit' class='px-6 py-2.5 bg-tea_green text-stone-800 font-medium rounded-xl hover:opacity-80 transition'>Save Details</button>
+        <a href='{% url "dashboard:home" %}' class='px-6 py-2.5 border border-stone-200 text-stone-600 font-medium rounded-xl hover:bg-stone-50 transition'>Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

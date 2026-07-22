@@ -2,14 +2,36 @@
 {% block title %}{{ profile.name }} — Portfolio{% endblock %}
 {% block content %}
 <section class='min-h-screen flex items-center pt-24 pb-16 px-6'>
-  <div class='max-w-5xl mx-auto'>
-    <p class='text-light_bronze font-medium tracking-widest uppercase text-sm mb-4'>Available for work</p>
-    <h1 class='font-display text-6xl md:text-8xl font-semibold text-stone-800 leading-tight mb-6'>{{ profile.name|default:"Your Name" }}</h1>
-    <p class='text-2xl text-stone-600 mb-4'>{{ profile.role|default:"Software Developer" }}</p>
-    <p class='text-lg text-stone-500 max-w-2xl mb-10'>{{ profile.tagline|default:"Building thoughtful, production-grade software." }}</p>
-    <div class='flex flex-wrap gap-4'>
-      <a href='#projects' class='px-8 py-3 bg-stone-800 text-cornsilk rounded-full font-semibold hover:bg-stone-700 transition-colors'>View Projects</a>
-      <a href='#contact' class='px-8 py-3 border-2 border-stone-800 text-stone-800 rounded-full font-semibold hover:bg-stone-800 hover:text-cornsilk transition-colors'>Get in Touch</a>
+  <div class='max-w-5xl mx-auto w-full'>
+    {% if social_links %}
+    <div class='flex flex-wrap gap-4 mb-8'>
+      {% for link in social_links %}
+      <a href='{{ link.url }}' target='_blank' rel='noopener noreferrer' class='px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-full text-sm font-medium transition-colors'>
+        {{ link.platform }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class='grid md:grid-cols-2 gap-12 items-center'>
+      <div class='flex justify-center md:justify-end order-1 md:order-1'>
+        {% if profile.profile_image %}
+        <img src='{{ profile.profile_image.url }}' alt='{{ profile.name }}' class='w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-soft border-4 border-cornsilk'>
+        {% else %}
+        <div class='w-64 h-64 md:w-80 md:h-80 rounded-full bg-tea_green/30 flex items-center justify-center shadow-soft border-4 border-cornsilk'>
+          <span class='text-7xl md:text-8xl font-display text-stone-400'>{{ profile.name|first|default:"M" }}</span>
+        </div>
+        {% endif %}
+      </div>
+      <div class='order-2 md:order-2 text-center md:text-left'>
+        <p class='text-light_bronze font-medium tracking-widest uppercase text-sm mb-4'>Available for work</p>
+        <h1 class='font-display text-5xl md:text-7xl font-semibold text-stone-800 leading-tight mb-4'>{{ profile.name|default:"Your Name" }}</h1>
+        <p class='text-xl md:text-2xl text-stone-600 mb-4'>{{ profile.role|default:"Software Developer" }}</p>
+        <p class='text-lg text-stone-500 max-w-xl mb-8'>{{ profile.tagline|default:"Building thoughtful, production-grade software." }}</p>
+        <div class='flex flex-wrap gap-4 justify-center md:justify-start'>
+          <a href='#projects' class='px-8 py-3 bg-stone-800 text-cornsilk rounded-full font-semibold hover:bg-stone-700 transition-colors'>View Projects</a>
+          <a href='#contact' class='px-8 py-3 border-2 border-stone-800 text-stone-800 rounded-full font-semibold hover:bg-stone-800 hover:text-cornsilk transition-colors'>Get in Touch</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -23,6 +45,36 @@
         <div class='flex flex-wrap gap-2'>{% for skill in cat.skills.all %}<span class='px-3 py-1 bg-tea_green/50 text-stone-700 rounded-full text-sm font-medium'>{{ skill.name }}</span>{% endfor %}</div>
       </div>
       {% empty %}<p class='text-stone-400 col-span-3'>No skills added yet. Add via the admin panel.</p>{% endfor %}
+    </div>
+  </div>
+</section>
+<section id='education' class='py-24 px-6'>
+  <div class='max-w-5xl mx-auto'>
+    <h2 class='font-display text-4xl font-semibold mb-12 text-stone-800'>Education</h2>
+    <div class='space-y-6'>
+      {% for edu in education_list %}
+      <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
+        <div class='flex flex-wrap justify-between items-start mb-2'><h3 class='font-semibold text-lg text-stone-800'>{{ edu.degree }}</h3><span class='text-sm text-stone-400'>{{ edu.year }}</span></div>
+        <p class='text-light_bronze font-medium mb-3'>{{ edu.institution }}</p>
+        {% if edu.description %}<p class='text-stone-600 text-sm whitespace-pre-line'>{{ edu.description }}</p>{% endif %}
+      </div>
+      {% empty %}<p class='text-stone-400'>No education added yet.</p>{% endfor %}
+    </div>
+  </div>
+</section>
+<section id='certifications' class='py-24 px-6 bg-beige/40'>
+  <div class='max-w-5xl mx-auto'>
+    <h2 class='font-display text-4xl font-semibold mb-12 text-stone-800'>Certifications</h2>
+    <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+      {% for cert in certifications %}
+      <div class='bg-cornsilk rounded-2xl p-6 shadow-soft hover:shadow-lg transition-shadow'>
+        {% if cert.preview_image %}<img src='{{ cert.preview_image.url }}' alt='{{ cert.name }}' class='w-full h-32 object-cover rounded-xl mb-4' loading='lazy'>{% endif %}
+        <h3 class='font-semibold text-lg text-stone-800 mb-2'>{{ cert.name }}</h3>
+        <p class='text-sm text-stone-500 mb-2'>{{ cert.issuer }}</p>
+        <p class='text-xs text-stone-400'>{{ cert.issue_date|date:"F Y"|default:"N/A" }}</p>
+        {% if cert.credential_url %}<a href='{{ cert.credential_url }}' target='_blank' rel='noopener noreferrer' class='inline-flex items-center gap-1 text-xs font-medium text-light_bronze hover:text-amber-700 mt-4'>View Credential →</a>{% endif %}
+      </div>
+      {% empty %}<p class='text-stone-400 col-span-4'>No certifications added yet. Add via the admin panel.</p>{% endfor %}
     </div>
   </div>
 </section>
@@ -58,10 +110,47 @@
   </div>
 </section>
 <section id='contact' class='py-24 px-6'>
-  <div class='max-w-2xl mx-auto text-center'>
-    <h2 class='font-display text-4xl font-semibold mb-4 text-stone-800'>Get in Touch</h2>
-    <p class='text-stone-500 mb-10'>Have a project in mind or want to collaborate? Send me a message.</p>
-    <div id='contact-form-wrapper'>{% include 'partials/contact_form.html' with form=form|default:'' %}</div>
+  <div class='max-w-5xl mx-auto'>
+    <h2 class='font-display text-4xl font-semibold mb-12 text-stone-800 text-center'>Get in Touch</h2>
+    <div class='grid md:grid-cols-2 gap-12'>
+      <div class='space-y-6'>
+        <p class='text-stone-500 text-lg'>Have a project in mind or want to collaborate? Send me a message or reach out through my direct contact details.</p>
+        <div class='space-y-4 pt-6'>
+          {% if profile.email %}
+          <div class='flex items-center gap-4'>
+            <span class='w-10 h-10 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 font-bold'>@</span>
+            <div>
+              <p class='text-xs text-stone-400 uppercase tracking-wide'>Email</p>
+              <a href='mailto:{{ profile.email }}' class='text-stone-800 font-medium hover:underline'>{{ profile.email }}</a>
+            </div>
+          </div>
+          {% endif %}
+          
+          {% if profile.phone %}
+          <div class='flex items-center gap-4'>
+            <span class='w-10 h-10 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 font-bold'>P</span>
+            <div>
+              <p class='text-xs text-stone-400 uppercase tracking-wide'>Phone</p>
+              <p class='text-stone-800 font-medium'>{{ profile.phone }}</p>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if profile.location or profile.address %}
+          <div class='flex items-start gap-4'>
+            <span class='w-10 h-10 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 font-bold'>L</span>
+            <div>
+              <p class='text-xs text-stone-400 uppercase tracking-wide'>Location / Address</p>
+              <p class='text-stone-800 font-medium'>{{ profile.address|default:profile.location }}</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class='bg-cornsilk/50 rounded-2xl p-6 shadow-soft'>
+        <div id='contact-form-wrapper'>{% include 'partials/contact_form.html' with form=form|default:'' %}</div>
+      </div>
+    </div>
   </div>
 </section>
 {% endblock %}

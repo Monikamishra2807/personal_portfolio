@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Manage Projects{% endblock %}
+{% block content %}
+<div class='min-h-screen pt-20 px-6 pb-12'>
+  <div class='max-w-6xl mx-auto'>
+    <div class='flex justify-between items-center mb-8'>
+      <h1 class='font-display text-3xl font-semibold text-stone-800'>Manage Projects</h1>
+      <a href='{% url "dashboard:project_create" %}' class='px-4 py-2 bg-tea_green text-stone-800 font-medium text-sm rounded-xl hover:opacity-80 transition shadow-soft'>
+        + Add Project
+      </a>
+    </div>
+
+    {% if projects %}
+    <div class='grid gap-4'>
+      {% for project in projects %}
+      <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
+        <div class='flex justify-between items-start'>
+          <div class='flex-1'>
+            <div class='flex items-center gap-3 mb-2'>
+              <h3 class='font-semibold text-lg text-stone-800'>{{ project.title }}</h3>
+              {% if project.is_featured %}<span class='px-2 py-1 bg-tea_green/40 text-stone-700 text-xs font-medium rounded-full'>Featured</span>{% endif %}
+              {% if not project.is_active %}<span class='px-2 py-1 bg-red-100 text-red-700 text-xs font-medium rounded-full'>Inactive</span>{% endif %}
+            </div>
+            <p class='text-stone-600 text-sm mb-2'>{{ project.short_description }}</p>
+            <div class='flex gap-2 flex-wrap mb-2'>
+              {% for tag in project.tags.all %}<span class='text-xs px-2 py-1 bg-tea_green/40 rounded-full'>{{ tag.name }}</span>{% endfor %}
+            </div>
+            <div class='flex gap-4 text-xs text-stone-400'>
+              {% if project.github_url %}<a href='{{ project.github_url }}' target='_blank' rel='noopener noreferrer' class='hover:text-stone-800'>GitHub →</a>{% endif %}
+              {% if project.live_url %}<a href='{{ project.live_url }}' target='_blank' rel='noopener noreferrer' class='hover:text-stone-800'>Live Demo →</a>{% endif %}
+            </div>
+          </div>
+          <div class='flex gap-2 ml-4'>
+            <a href='{% url "dashboard:project_detail" project.pk %}' class='px-3 py-1 bg-stone-200 text-stone-700 rounded-lg text-sm font-medium hover:bg-stone-300 transition'>View</a>
+            <a href='{% url "dashboard:project_update" project.pk %}' class='px-3 py-1 bg-tea_green text-stone-800 rounded-lg text-sm font-medium hover:opacity-80 transition'>Edit</a>
+            <a href='{% url "dashboard:project_delete" project.pk %}' class='px-3 py-1 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition'>Delete</a>
+          </div>
+        </div>
+        {% if project.thumbnail %}<img src='{{ project.thumbnail.url }}' alt='{{ project.title }}' class='w-full h-48 object-cover rounded-xl mt-4' loading='lazy'>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class='bg-cornsilk rounded-2xl p-12 shadow-soft text-center'>
+      <p class='text-stone-400 mb-4'>No projects yet.</p>
+      <a href='{% url "dashboard:project_create" %}' class='px-6 py-3 bg-tea_green text-stone-800 font-medium rounded-xl hover:opacity-80 transition shadow-soft'>
+        Add Your First Project
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
