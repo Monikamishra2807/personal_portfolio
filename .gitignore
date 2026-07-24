@@ -1,0 +1,110 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# uv
+.venv/
+uv.lock
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/staticfiles/
+/media/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (for Tailwind)
+node_modules/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Django static/media
+# keep tracked compiled static if desired; ignore default static/media dirs
+/staticfiles/
+/media/
+
+# Migration caches
+**/migrations/__pycache__/
+
+# IDE/Editor
+*.sublime-project
+*.sublime-workspace
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*~
+*.bak
+
+# Environment
+.env
+.env.*
+!.env.example
+.env.local
+
+# Secrets
+secrets.json
+
+# Lockfiles (optional)
+# Pipfile.lock
+# poetry.lock
+
+# Docker/dev
+docker-compose.override.yml

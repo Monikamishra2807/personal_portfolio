@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans bg-cream text-charcoal antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-display font-semibold tracking-tight; }
+  ::selection { @apply bg-terracotta/20 text-charcoal; }
+  input, textarea, select {
+    @apply w-full bg-white border border-cream-darker text-charcoal placeholder-charcoal-lighter
+           rounded-lg px-4 py-3 text-sm
+           focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta
+           transition-all duration-200;
+  }
+  label { @apply block text-sm font-medium text-charcoal-light mb-1.5; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-terracotta text-white
+           font-semibold text-sm rounded-full
+           hover:bg-terracotta-light hover:shadow-lg hover:shadow-terracotta/20
+           active:bg-terracotta-dark active:scale-[0.98] transition-all duration-200;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-terracotta text-terracotta
+           font-semibold text-sm rounded-full
+           hover:bg-terracotta/10 hover:text-terracotta-dark
+           active:scale-[0.98] transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-charcoal-lighter
+           font-medium text-sm rounded-lg
+           hover:text-charcoal hover:bg-cream-dark
+           transition-all duration-200;
+  }
+  .card {
+    @apply bg-white/60 backdrop-blur-sm border border-cream-darker
+           rounded-2xl p-6
+           hover:border-terracotta/30 hover:shadow-xl hover:shadow-terracotta/5
+           transition-all duration-300;
+  }
+  .card-elevated {
+    @apply bg-white border border-cream-darker rounded-2xl p-6 shadow-soft;
+  }
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full
+           bg-terracotta/10 text-terracotta border border-terracotta/20;
+  }
+  .link { @apply text-terracotta hover:text-terracotta-dark transition-colors underline-offset-2 hover:underline; }
+  .input-group { @apply space-y-4; }
+  .section { @apply py-16 md:py-24 lg:py-32; }
+  .container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+  .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+}
