@@ -4,23 +4,23 @@
 <div class='min-h-screen pt-20 px-6 pb-12'>
   <div class='max-w-2xl mx-auto'>
     <div class='mb-8'>
-      <a href='{% url "dashboard:social_links_list" %}' class='text-sm text-stone-400 hover:text-stone-800 mb-4 inline-block'>
+      <a href='{% url "dashboard:social_links_list" %}' class='text-sm text-charcoal-lighter hover:text-charcoal mb-4 inline-block'>
         ← Back to Social Links List
       </a>
-      <h1 class='font-display text-3xl font-semibold text-stone-800'>
+      <h1 class='font-display text-3xl font-semibold text-charcoal'>
         {% if object %}Edit Social Link{% else %}Add Social Link{% endif %}
       </h1>
     </div>
 
-    <div class='bg-cornsilk rounded-2xl p-8 shadow-soft'>
+    <div class='bg-cream rounded-2xl p-8 shadow-soft'>
       <form method='post'>
         {% csrf_token %}
         {{ form.as_p }}
         <div class='mt-6 flex gap-4'>
-          <button type='submit' class='px-6 py-3 bg-tea_green text-stone-800 font-semibold rounded-xl hover:opacity-80 transition shadow-soft'>
+          <button type='submit' class='px-6 py-3 bg-terracotta text-white font-semibold rounded-xl hover:bg-terracotta-light transition shadow-soft'>
             {% if object %}Save Changes{% else %}Add Social Link{% endif %}
           </button>
-          <a href='{% url "dashboard:social_links_list" %}' class='px-6 py-3 border-2 border-stone-800 text-stone-800 rounded-xl font-semibold hover:bg-stone-800 hover:text-cornsilk transition'>
+          <a href='{% url "dashboard:social_links_list" %}' class='px-6 py-3 border-2 border-charcoal text-charcoal rounded-xl font-semibold hover:bg-charcoal hover:text-white transition'>
             Cancel
           </a>
         </div>

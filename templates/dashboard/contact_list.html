@@ -4,25 +4,25 @@
 <div class='min-h-screen pt-20 px-6 pb-12'>
   <div class='max-w-6xl mx-auto'>
     <div class='flex justify-between items-center mb-8'>
-      <h1 class='font-display text-3xl font-semibold text-stone-800'>Contact Messages</h1>
-      <p class='text-stone-400 text-sm'>{{ contacts.count }} total messages</p>
+      <h1 class='font-display text-3xl font-semibold text-charcoal'>Contact Messages</h1>
+      <p class='text-charcoal-lighter text-sm'>{{ contacts.count }} total messages</p>
     </div>
 
     {% if contacts %}
-    <div class='bg-white rounded-2xl shadow-soft overflow-hidden divide-y divide-stone-100'>
+    <div class='bg-white rounded-2xl shadow-soft overflow-hidden divide-y divide-cream-darker'>
       {% for contact in contacts %}
-      <div class='p-6 hover:bg-stone-50 transition-colors'>
+      <div class='p-6 hover:bg-cream-dark/50 transition-colors'>
         <div class='flex justify-between items-start mb-3'>
           <div>
-            <h3 class='font-semibold text-lg text-stone-800'>{{ contact.name }}</h3>
-            <p class='text-sm text-stone-400'>{{ contact.email }}</p>
-            <p class='text-xs text-stone-300 mt-1'>{{ contact.created_at|date:"F d, Y g:i A" }}</p>
+            <h3 class='font-semibold text-lg text-charcoal'>{{ contact.name }}</h3>
+            <p class='text-sm text-charcoal-lighter'>{{ contact.email }}</p>
+            <p class='text-xs text-charcoal-lighter mt-1'>{{ contact.created_at|date:"F d, Y g:i A" }}</p>
           </div>
           {% if not contact.is_resolved %}
           <a href='#' hx-post='{% url "dashboard:contact_resolve" contact.pk %}'
              hx-target='this'
              hx-swap='outerHTML'
-             class='px-4 py-2 bg-tea_green text-stone-800 font-medium text-sm rounded-xl hover:opacity-80 transition'
+             class='px-4 py-2 bg-terracotta text-white font-medium text-sm rounded-xl hover:bg-terracotta-light transition'
              title='Mark as resolved'>
             ✓ Mark Resolved
           </a>
@@ -30,15 +30,15 @@
           <span class='px-4 py-2 bg-green-100 text-green-700 font-medium text-sm rounded-xl'>Resolved</span>
           {% endif %}
         </div>
-        <p class='font-semibold text-light_bronze mb-1'>{{ contact.subject }}</p>
-        <p class='text-stone-600 whitespace-pre-line'>{{ contact.message }}</p>
+        <p class='font-semibold text-terracotta mb-1'>{{ contact.subject }}</p>
+        <p class='text-charcoal-light whitespace-pre-line'>{{ contact.message }}</p>
       </div>
       {% endfor %}
     </div>
     {% else %}
-    <div class='bg-cornsilk rounded-2xl p-12 shadow-soft text-center'>
-      <p class='text-stone-400 mb-4'>No contact messages yet.</p>
-      <a href='{% url "contact:submit" %}' target='_blank' class='text-tea_green font-medium hover:underline'>
+    <div class='bg-cream rounded-2xl p-12 shadow-soft text-center'>
+      <p class='text-charcoal-lighter mb-4'>No contact messages yet.</p>
+      <a href='{% url "contact:submit" %}' target='_blank' class='text-terracotta font-medium hover:underline'>
         Send a test message →
       </a>
     </div>

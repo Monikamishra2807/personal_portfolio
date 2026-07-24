@@ -4,3 +4,26 @@ services:
     env: docker
     plan: free
     autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_BUCKET
+        value: portfolio-media
+      - key: SUPABASE_PUBLIC_BUCKET
+        value: "true"
+      - key: DEFAULT_FROM_EMAIL
+        value: noreply@example.com
+      - key: CONTACT_EMAIL
+        sync: false

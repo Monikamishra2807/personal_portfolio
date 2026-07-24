@@ -3,47 +3,47 @@
 {% block content %}
 <section class='min-h-screen pt-24 pb-16 px-6'>
   <div class='max-w-5xl mx-auto'>
-    <h1 class='font-display text-5xl md:text-7xl font-semibold text-stone-800 leading-tight mb-8'>About Me</h1>
+    <h1 class='font-display text-5xl md:text-7xl font-semibold text-charcoal leading-tight mb-8'>About Me</h1>
 
     <div class='grid md:grid-cols-2 gap-12 mb-16'>
       <div class='space-y-6'>
         {% if profile.profile_image %}<img src='{{ profile.profile_image.url }}' alt='{{ profile.name }}' class='w-full h-80 object-cover rounded-2xl shadow-soft mb-6'>{% endif %}
-        <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
-          <h2 class='font-semibold text-xl text-stone-800 mb-3'>Biography</h2>
-          <p class='text-stone-600 whitespace-pre-line'>{{ profile.biography|default:"No biography added yet." }}</p>
+        <div class='bg-cream rounded-2xl p-6 shadow-soft'>
+          <h2 class='font-semibold text-xl text-charcoal mb-3'>Biography</h2>
+          <p class='text-charcoal-light whitespace-pre-line'>{{ profile.biography|default:"No biography added yet." }}</p>
         </div>
       </div>
 
       <div class='space-y-6'>
-        <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
-          <h2 class='font-semibold text-xl text-stone-800 mb-3'>Experience Summary</h2>
-          <p class='text-stone-600 whitespace-pre-line'>{{ profile.experience_summary|default:"No experience summary added yet." }}</p>
+        <div class='bg-cream rounded-2xl p-6 shadow-soft'>
+          <h2 class='font-semibold text-xl text-charcoal mb-3'>Experience Summary</h2>
+          <p class='text-charcoal-light whitespace-pre-line'>{{ profile.experience_summary|default:"No experience summary added yet." }}</p>
         </div>
 
-        <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
-          <h2 class='font-semibold text-xl text-stone-800 mb-3'>Skills Summary</h2>
-          <p class='text-stone-600 whitespace-pre-line'>{{ profile.skills_summary|default:"No skills summary added yet." }}</p>
+        <div class='bg-cream rounded-2xl p-6 shadow-soft'>
+          <h2 class='font-semibold text-xl text-charcoal mb-3'>Skills Summary</h2>
+          <p class='text-charcoal-light whitespace-pre-line'>{{ profile.skills_summary|default:"No skills summary added yet." }}</p>
         </div>
 
-        <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
-          <h2 class='font-semibold text-xl text-stone-800 mb-3'>Contact Information</h2>
+        <div class='bg-cream rounded-2xl p-6 shadow-soft'>
+          <h2 class='font-semibold text-xl text-charcoal mb-3'>Contact Information</h2>
           <div class='space-y-3'>
             {% if profile.email %}
             <div class='flex items-center gap-3'>
-              <span class='w-8 h-8 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 text-sm font-bold'>@</span>
-              <a href='mailto:{{ profile.email }}' class='text-stone-600 hover:text-stone-900 hover:underline'>{{ profile.email }}</a>
+              <span class='w-8 h-8 rounded-full bg-terracotta/15 flex items-center justify-center text-charcoal-light text-sm font-bold'>@</span>
+              <a href='mailto:{{ profile.email }}' class='text-charcoal-light hover:text-charcoal hover:underline'>{{ profile.email }}</a>
             </div>
             {% endif %}
             {% if profile.phone %}
             <div class='flex items-center gap-3'>
-              <span class='w-8 h-8 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 text-sm font-bold'>P</span>
-              <p class='text-stone-600'>{{ profile.phone }}</p>
+              <span class='w-8 h-8 rounded-full bg-terracotta/15 flex items-center justify-center text-charcoal-light text-sm font-bold'>P</span>
+              <p class='text-charcoal-light'>{{ profile.phone }}</p>
             </div>
             {% endif %}
             {% if profile.location %}
             <div class='flex items-center gap-3'>
-              <span class='w-8 h-8 rounded-full bg-tea_green/30 flex items-center justify-center text-stone-700 text-sm font-bold'>L</span>
-              <p class='text-stone-600'>{{ profile.location }}</p>
+              <span class='w-8 h-8 rounded-full bg-terracotta/15 flex items-center justify-center text-charcoal-light text-sm font-bold'>L</span>
+              <p class='text-charcoal-light'>{{ profile.location }}</p>
             </div>
             {% endif %}
           </div>

@@ -31,7 +31,7 @@ TEMPLATES = [{
 }]
 WSGI_APPLICATION = 'config.wsgi.application'
 
-database_url = os.getenv('SUPABASE_URL')
+database_url = os.getenv('DATABASE_URL')
 if database_url:
     url = urlparse(database_url)
     DATABASES = {

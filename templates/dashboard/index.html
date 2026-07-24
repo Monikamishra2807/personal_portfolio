@@ -4,50 +4,50 @@
 <div class='min-h-screen pt-20 px-6 pb-12'>
   <div class='max-w-6xl mx-auto'>
     <div class='flex justify-between items-center mb-8'>
-      <h1 class='font-display text-3xl font-semibold text-stone-800'>Dashboard</h1>
+      <h1 class='font-display text-3xl font-semibold text-charcoal'>Dashboard</h1>
       <div class='flex gap-4 items-center'>
-        <a href='{% url "dashboard:profile_edit" %}' class='px-4 py-2 bg-tea_green text-stone-800 font-medium text-sm rounded-xl hover:opacity-80 transition shadow-soft'>Edit Personal Details</a>
-        <a href='{% url "admin:index" %}' class='text-sm text-stone-500 hover:text-stone-800'>Admin Panel →</a>
+        <a href='{% url "dashboard:profile_edit" %}' class='px-4 py-2 bg-terracotta text-white font-medium text-sm rounded-xl hover:bg-terracotta-light transition shadow-soft'>Edit Personal Details</a>
+        <a href='{% url "admin:index" %}' class='text-sm text-charcoal-lighter hover:text-charcoal'>Admin Panel →</a>
       </div>
     </div>
 
     <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10'>
-      <a href='{% url "dashboard:project_list" %}' class='bg-cornsilk rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
-        <p class='text-2xl font-bold text-stone-800 mb-1'>{{ projects.count }}</p>
-        <p class='text-sm text-stone-400'>View Projects</p>
+      <a href='{% url "dashboard:project_list" %}' class='bg-cream rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-charcoal mb-1'>{{ projects.count }}</p>
+        <p class='text-sm text-charcoal-lighter'>View Projects</p>
       </a>
-      <a href='{% url "dashboard:education_list" %}' class='bg-papaya_whip/60 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
-        <p class='text-2xl font-bold text-stone-800 mb-1'>Education</p>
-        <p class='text-sm text-stone-400'>Manage education entries</p>
+      <a href='{% url "dashboard:education_list" %}' class='bg-cream-dark/70 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-charcoal mb-1'>Education</p>
+        <p class='text-sm text-charcoal-lighter'>Manage education entries</p>
       </a>
-      <a href='{% url "dashboard:certification_list" %}' class='bg-papaya_whip/60 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
-        <p class='text-2xl font-bold text-stone-800 mb-1'>Certifications</p>
-        <p class='text-sm text-stone-400'>Manage certifications</p>
+      <a href='{% url "dashboard:certification_list" %}' class='bg-cream-dark/70 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-charcoal mb-1'>Certifications</p>
+        <p class='text-sm text-charcoal-lighter'>Manage certifications</p>
       </a>
-      <a href='{% url "dashboard:social_links_list" %}' class='bg-papaya_whip/60 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
-        <p class='text-2xl font-bold text-stone-800 mb-1'>Social Links</p>
-        <p class='text-sm text-stone-400'>Manage social links</p>
+      <a href='{% url "dashboard:social_links_list" %}' class='bg-cream-dark/70 rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-charcoal mb-1'>Social Links</p>
+        <p class='text-sm text-charcoal-lighter'>Manage social links</p>
       </a>
     </div>
 
     <div class='grid md:grid-cols-2 gap-4 mb-10'>
-      <a href='{% url "dashboard:contact_list" %}' class='bg-cornsilk rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
-        <p class='text-2xl font-bold text-stone-800 mb-1'>Contacts</p>
-        <p class='text-sm text-stone-400'>View contact messages</p>
+      <a href='{% url "dashboard:contact_list" %}' class='bg-cream rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-charcoal mb-1'>Contacts</p>
+        <p class='text-sm text-charcoal-lighter'>View contact messages</p>
       </a>
-      <a href='{% url "dashboard:profile_edit" %}' class='bg-cornsilk rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
-        <p class='text-2xl font-bold text-stone-800 mb-1'>Profile</p>
-        <p class='text-sm text-stone-400'>Edit personal details</p>
+      <a href='{% url "dashboard:profile_edit" %}' class='bg-cream rounded-2xl p-5 shadow-soft hover:shadow-lg transition-shadow text-center'>
+        <p class='text-2xl font-bold text-charcoal mb-1'>Profile</p>
+        <p class='text-sm text-charcoal-lighter'>Edit personal details</p>
       </a>
     </div>
 
-    <div class='bg-papaya_whip/60 rounded-2xl p-6 shadow-soft mb-8'>
-      <h2 class='font-semibold text-stone-700 mb-4 text-lg'>Add New Project</h2>
+    <div class='bg-cream-dark/70 rounded-2xl p-6 shadow-soft mb-8'>
+      <h2 class='font-semibold text-charcoal-light mb-4 text-lg'>Add New Project</h2>
       {% include 'dashboard/partials/project_form.html' %}
     </div>
-    <div class='bg-cornsilk rounded-2xl p-6 shadow-soft'>
-      <h2 class='font-semibold text-stone-700 mb-4 text-lg'>Recent Projects</h2>
-      <div id='project-list' class='divide-y divide-stone-100'>{% for project in projects %}{% include 'dashboard/partials/project_row.html' %}{% empty %}<p class='text-stone-400 py-4 text-center'>No projects yet.</p>{% endfor %}</div>
+    <div class='bg-cream rounded-2xl p-6 shadow-soft'>
+      <h2 class='font-semibold text-charcoal-light mb-4 text-lg'>Recent Projects</h2>
+      <div id='project-list' class='divide-y divide-cream-darker'>{% for project in projects %}{% include 'dashboard/partials/project_row.html' %}{% empty %}<p class='text-charcoal-lighter py-4 text-center'>No projects yet.</p>{% endfor %}</div>
     </div>
   </div>
 </div>
