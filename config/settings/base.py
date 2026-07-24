@@ -31,7 +31,7 @@ TEMPLATES = [{
 }]
 WSGI_APPLICATION = 'config.wsgi.application'
 
-database_url = os.getenv('SUPABASE_URL')
+database_url = os.getenv('DATABASE_URL')
 if database_url:
     url = urlparse(database_url)
     DATABASES = {
@@ -74,3 +74,4 @@ TAILWIND_APP_NAME='theme'
 INTERNAL_IPS=['127.0.0.1']
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_URL='/dashboard/login/'
+LOGIN_REDIRECT_URL='/dashboard/'

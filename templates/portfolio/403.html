@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en' class='scroll-smooth'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>403 - Access Denied | Portfolio</title>
+    <meta name='description' content='You do not have permission to access this page.'>
+    <script src='https://unpkg.com/htmx.org@1.9.12'></script>
+    <script src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'></script>
+    <script>tailwind.config={theme:{extend:{colors:{cream:{DEFAULT:'#fdf8f0',dark:'#f5ede0',darker:'#ebe3d5'},charcoal:{DEFAULT:'#2d2d2d',light:'#4a4a4a',lighter:'#6b6b6b'},terracotta:{DEFAULT:'#c4704b',light:'#d4896a',dark:'#a85a3a'}},fontFamily:{sans:['Inter','sans-serif'],display:['Cormorant Garamond','serif']},boxShadow:{soft:'0 10px 30px rgba(0,0,0,0.08)'}}}}</script>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap' rel='stylesheet'>
+</head>
+<body class='bg-cream text-charcoal min-h-screen flex items-center justify-center'>
+    <div class='text-center px-6 max-w-2xl'>
+        <div class='mb-8'>
+            <span class='text-8xl font-display font-bold text-cream-darker'>403</span>
+        </div>
+        <h1 class='font-display text-3xl font-semibold text-charcoal mb-4'>Access Denied</h1>
+        <p class='text-lg text-charcoal-lighter mb-8'>You do not have permission to access this page. Please make sure you are logged in or contact the administrator if you believe this is an error.</p>
+        <div class='flex flex-col sm:flex-row gap-4 justify-center'>
+            <a href='{% url "portfolio:home" %}' class='px-8 py-3 bg-terracotta text-white rounded-full font-semibold hover:bg-terracotta-light transition-colors'>
+                Return Home
+            </a>
+            <a href='/dashboard/login/' class='px-8 py-3 border-2 border-charcoal text-charcoal rounded-full font-semibold hover:bg-charcoal hover:text-white transition-colors'>
+                Sign In
+            </a>
+        </div>
+    </div>
+</body>
+</html>

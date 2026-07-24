@@ -1,0 +1,53 @@
+{% extends 'dashboard/index.html' %}
+{% block title %}{{ object.platform }} - Social Link{% endblock %}
+{% block content %}
+<div class='min-h-screen pt-20 px-6 pb-12'>
+  <div class='max-w-3xl mx-auto'>
+    <div class='mb-8'>
+      <a href='{% url "dashboard:social_links_list" %}' class='text-sm text-charcoal-lighter hover:text-charcoal mb-4 inline-block'>
+        ← Back to Social Links List
+      </a>
+      <div class='flex items-center gap-3 mb-4'>
+        {% if object.icon %}<span class='text-4xl'>{{ object.icon }}</span>{% else %}<span class='text-4xl bg-cream-dark px-4 py-1 rounded-lg'>{{ object.platform }}</span>{% endif %}
+        <h1 class='font-display text-4xl font-semibold text-charcoal'>{{ object.platform }}</h1>
+      </div>
+    </div>
+
+    <div class='grid gap-8'>
+      <div class='bg-cream rounded-2xl p-8 shadow-soft'>
+        <div class='grid grid-cols-2 gap-4 mb-6'>
+          <div>
+            <p class='text-xs text-charcoal-lighter uppercase tracking-wide mb-1'>URL</p>
+            <a href='{{ object.url }}' target='_blank' rel='noopener noreferrer' class='text-terracotta font-medium hover:underline break-all'>{{ object.url }}</a>
+          </div>
+          <div>
+            <p class='text-xs text-charcoal-lighter uppercase tracking-wide mb-1'>Icon</p>
+            <p class='font-semibold text-charcoal text-lg'>{% if object.icon %}{{ object.icon }}{% else %}None{% endif %}</p>
+          </div>
+        </div>
+        <div class='flex gap-4'>
+          <div class='flex items-center gap-2'>
+            <p class='text-xs text-charcoal-lighter uppercase tracking-wide'>Status:</p>
+            <span class='px-3 py-1 text-sm font-medium rounded-lg {% if object.is_active %}bg-green-100 text-green-700{% else %}bg-cream-dark text-charcoal-light{% endif %}'>
+              {% if object.is_active %}✓ Active{% else %}• Inactive{% endif %}
+            </span>
+          </div>
+          <div>
+            <p class='text-xs text-charcoal-lighter uppercase tracking-wide'>Order:</p>
+            <p class='font-semibold text-charcoal text-lg'>{{ object.order }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='flex gap-4'>
+        <a href='{% url "dashboard:social_link_update" object.pk %}' class='flex-1 px-6 py-3 bg-terracotta text-white font-semibold rounded-xl hover:bg-terracotta-light transition shadow-soft text-center'>
+          Edit Social Link
+        </a>
+        <a href='{% url "dashboard:social_link_delete" object.pk %}' class='px-6 py-3 bg-red-100 text-red-700 font-semibold rounded-xl hover:bg-red-200 transition shadow-soft text-center'>
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

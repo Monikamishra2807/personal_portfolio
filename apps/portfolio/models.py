@@ -17,6 +17,8 @@ class Profile(TimeStampedModel):
     resume = models.FileField(upload_to='resume/', blank=True)
     profile_image = models.ImageField(upload_to='profile/', blank=True)
     email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=30, blank=True)
+    address = models.TextField(blank=True)
     def __str__(self): return self.name
 class TechCategory(OrderedModel, PublishableModel, TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)

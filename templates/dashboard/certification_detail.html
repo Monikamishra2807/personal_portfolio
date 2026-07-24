@@ -1,0 +1,41 @@
+{% extends 'dashboard/index.html' %}
+{% block title %}{{ object.name }} - Certification{% endblock %}
+{% block content %}
+<div class='min-h-screen pt-20 px-6 pb-12'>
+  <div class='max-w-3xl mx-auto'>
+    <div class='mb-8'>
+      <a href='{% url "dashboard:certification_list" %}' class='text-sm text-charcoal-lighter hover:text-charcoal mb-4 inline-block'>
+        ← Back to Certifications List
+      </a>
+      <h1 class='font-display text-4xl font-semibold text-charcoal mb-4'>{{ object.name }}</h1>
+      <p class='text-xl text-terracotta font-medium mb-6'>{{ object.issuer }}</p>
+    </div>
+
+    <div class='grid gap-8'>
+      <div class='bg-cream rounded-2xl p-8 shadow-soft'>
+        {% if object.preview_image %}<img src='{{ object.preview_image.url }}' alt='{{ object.name }}' class='w-full h-64 object-cover rounded-xl mb-6' loading='lazy'>{% endif %}
+        <div class='grid grid-cols-2 gap-4 mb-6'>
+          <div>
+            <p class='text-xs text-charcoal-lighter uppercase tracking-wide mb-1'>Issue Date</p>
+            <p class='font-semibold text-charcoal text-lg'>{{ object.issue_date|date:"F Y"|default:"N/A" }}</p>
+          </div>
+          <div>
+            <p class='text-xs text-charcoal-lighter uppercase tracking-wide mb-1'>Order</p>
+            <p class='font-semibold text-charcoal text-lg'>{{ object.order }}</p>
+          </div>
+        </div>
+        {% if object.credential_url %}<div><p class='text-xs text-charcoal-lighter uppercase tracking-wide mb-2'>Credential URL</p><a href='{{ object.credential_url }}' target='_blank' rel='noopener noreferrer' class='text-terracotta font-medium hover:underline'>{{ object.credential_url }}</a></div>{% endif %}
+      </div>
+
+      <div class='flex gap-4'>
+        <a href='{% url "dashboard:certification_update" object.pk %}' class='flex-1 px-6 py-3 bg-terracotta text-white font-semibold rounded-xl hover:bg-terracotta-light transition shadow-soft text-center'>
+          Edit Certification
+        </a>
+        <a href='{% url "dashboard:certification_delete" object.pk %}' class='px-6 py-3 bg-red-100 text-red-700 font-semibold rounded-xl hover:bg-red-200 transition shadow-soft text-center'>
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

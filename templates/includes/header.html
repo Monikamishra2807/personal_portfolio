@@ -1,20 +1,22 @@
-<header class='fixed top-0 w-full z-50 bg-cornsilk/90 backdrop-blur-sm border-b border-stone-200'>
+<header class='fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-sm border-b border-cream-darker'>
   <div class='max-w-6xl mx-auto px-6 py-4 flex items-center justify-between'>
-    <a href='{% url "portfolio:home" %}' class='font-display text-xl font-semibold text-stone-800'>Portfolio</a>
+    <a href='{% url "portfolio:home" %}' class='font-display text-xl font-semibold text-charcoal'>Portfolio</a>
     <nav class='hidden md:flex items-center gap-8'>
-      <a href='#skills' class='text-sm text-stone-600 hover:text-stone-900 transition-colors'>Skills</a>
-      <a href='#projects' class='text-sm text-stone-600 hover:text-stone-900 transition-colors'>Projects</a>
-      <a href='#experience' class='text-sm text-stone-600 hover:text-stone-900 transition-colors'>Experience</a>
-      <a href='#contact' class='text-sm px-4 py-2 bg-stone-800 text-cornsilk rounded-full hover:bg-stone-700 transition-colors'>Contact</a>
+      <a href='{% url "portfolio:about" %}' class='text-sm text-charcoal-light hover:text-charcoal transition-colors'>About</a>
+      <a href='#skills' class='text-sm text-charcoal-light hover:text-charcoal transition-colors'>Skills</a>
+      <a href='#projects' class='text-sm text-charcoal-light hover:text-charcoal transition-colors'>Projects</a>
+      <a href='#experience' class='text-sm text-charcoal-light hover:text-charcoal transition-colors'>Experience</a>
+      <a href='#contact' class='text-sm px-4 py-2 bg-charcoal text-cream rounded-full hover:bg-charcoal-light transition-colors'>Contact</a>
     </nav>
-    <button @click='mobileOpen=!mobileOpen' class='md:hidden p-2 rounded-lg hover:bg-stone-100' aria-label='Toggle navigation'>
+    <button @click='mobileOpen=!mobileOpen' class='md:hidden p-2 rounded-lg hover:bg-cream-dark' aria-label='Toggle navigation'>
       <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' x-show='!mobileOpen' d='M4 6h16M4 12h16M4 18h16'/><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' x-show='mobileOpen' d='M6 18L18 6M6 6l12 12'/></svg>
     </button>
   </div>
-  <div x-show='mobileOpen' x-transition class='md:hidden bg-cornsilk/95 px-6 pb-4 space-y-3'>
-    <a href='#skills' class='block text-sm text-stone-700 py-1'>Skills</a>
-    <a href='#projects' class='block text-sm text-stone-700 py-1'>Projects</a>
-    <a href='#experience' class='block text-sm text-stone-700 py-1'>Experience</a>
-    <a href='#contact' class='block text-sm text-stone-700 py-1'>Contact</a>
+  <div x-show='mobileOpen' x-transition class='md:hidden bg-cream/95 px-6 pb-4 space-y-3'>
+    <a href='{% url "portfolio:about" %}' class='block text-sm text-charcoal py-1'>About</a>
+    <a href='#skills' class='block text-sm text-charcoal py-1'>Skills</a>
+    <a href='#projects' class='block text-sm text-charcoal py-1'>Projects</a>
+    <a href='#experience' class='block text-sm text-charcoal py-1'>Experience</a>
+    <a href='#contact' class='block text-sm text-charcoal py-1'>Contact</a>
   </div>
 </header>

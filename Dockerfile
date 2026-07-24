@@ -16,10 +16,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential libpq-dev curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy dependency files first (better layer caching)
-COPY pyproject.toml .python-version ./
+# Create virtual environment in /opt/venv and install dependencies
+ENV VIRTUAL_ENV=/opt/venv
+RUN python -m venv ${VIRTUAL_ENV}
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
-# Install production dependencies only (no dev group)
+# Copy dependency files first (better layer caching)
+COPY pyproject.toml .python-version uv.lock ./
+
+# Install production dependencies only (no dev group) into the /opt/venv
 RUN uv sync --frozen --no-dev
 
 # Copy project source
@@ -28,7 +33,7 @@ COPY . /app
 # Collect static files
 RUN mkdir -p /app/staticfiles
 
-# Run with uv-managed Python
+# Run with uv-managed Python from the isolated venv
 CMD ["sh", "-c", \
     "uv run python manage.py migrate && \
      uv run python manage.py collectstatic --noinput && \
